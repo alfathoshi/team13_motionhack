@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:motionhack/app/controllers/auth_controller.dart';
+import 'package:motionhack/app/modules/article_page/views/article_page_view.dart';
 import 'package:motionhack/app/modules/home/views/home_view.dart';
 import 'package:motionhack/app/modules/splash_screen/views/splash_screen_view.dart';
 import 'package:motionhack/app/utils/loading.dart';
@@ -28,7 +29,8 @@ class MyApp extends StatelessWidget {
             return GetMaterialApp(
               debugShowCheckedModeBanner: false,
               title: "Application",
-              initialRoute: snapshot.data != null ? Routes.HOME : Routes.SPLASH_SCREEN,
+              initialRoute:
+                  snapshot.data != null ? Routes.HOME : Routes.SPLASH_SCREEN,
               getPages: AppPages.routes,
               // home: snapshot.data != null ? HomeView() : SplashScreenView(),
             );
