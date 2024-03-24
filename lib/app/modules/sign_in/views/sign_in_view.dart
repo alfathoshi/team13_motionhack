@@ -3,10 +3,14 @@ import 'package:flutter/widgets.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:motionhack/app/controllers/auth_controller.dart';
 
 import '../controllers/sign_in_controller.dart';
 
 class SignInView extends GetView<SignInController> {
+  final emailC = TextEditingController();
+  final passC = TextEditingController();
+  final authC = Get.find<AuthController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,13 +43,14 @@ class SignInView extends GetView<SignInController> {
                     height: 20,
                   ),
                   TextField(
-                    controller: TextEditingController(),
+                    controller: emailC,
                     decoration: InputDecoration(
                       hintText: 'Email',
                       hintStyle: const TextStyle(color: Color(0xFFc4c4c4)),
                       enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
-                          borderSide: const BorderSide(color: Color(0xFFc4c4c4))),
+                          borderSide:
+                              const BorderSide(color: Color(0xFFc4c4c4))),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -55,7 +60,7 @@ class SignInView extends GetView<SignInController> {
                     height: 16,
                   ),
                   TextField(
-                    controller: TextEditingController(),
+                    controller: passC,
                     decoration: InputDecoration(
                       hintText: 'Password',
                       hintStyle: const TextStyle(color: Color(0xFFc4c4c4)),
@@ -63,7 +68,8 @@ class SignInView extends GetView<SignInController> {
                       suffixIconColor: const Color(0xFFc4c4c4),
                       enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
-                          borderSide: const BorderSide(color: Color(0xFFc4c4c4))),
+                          borderSide:
+                              const BorderSide(color: Color(0xFFc4c4c4))),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -86,7 +92,7 @@ class SignInView extends GetView<SignInController> {
                     height: 20,
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () => authC.login(emailC.text, passC.text),
                     style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFFc4c4c4),
                         foregroundColor: Colors.white,
