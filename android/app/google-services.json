@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "538989820748",
+    "project_id": "behealthy-d9c78",
+    "storage_bucket": "behealthy-d9c78.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:538989820748:android:4611c706a69d741ae56de9",
+        "android_client_info": {
+          "package_name": "com.team13.motionhack"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNCTdtNw7dkuellSCiejzt6XzMUbADNAg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
