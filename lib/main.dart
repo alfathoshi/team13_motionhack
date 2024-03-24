@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:motionhack/app/controllers/auth_controller.dart';
 import 'package:motionhack/app/modules/home/views/home_view.dart';
-import 'package:motionhack/app/modules/sign_in/views/sign_in_view.dart';
 import 'package:motionhack/app/modules/splash_screen/views/splash_screen_view.dart';
 import 'package:motionhack/app/utils/loading.dart';
 import 'app/routes/app_pages.dart';
@@ -23,15 +22,15 @@ class MyApp extends StatelessWidget {
     return StreamBuilder<User?>(
         stream: authC.streamAuthStatus,
         builder: (context, snapshot) {
-          print(snapshot);
+          print(snapshot.data);
           if (snapshot.connectionState == ConnectionState.active) {
             print(snapshot.data);
             return GetMaterialApp(
               debugShowCheckedModeBanner: false,
               title: "Application",
-              // initialRoute: Routes.SPLASH_SCREEN,
+              initialRoute: snapshot.data != null ? Routes.HOME : Routes.SPLASH_SCREEN,
               getPages: AppPages.routes,
-              home: snapshot.data != null ? HomeView() : SignInView(),
+              // home: snapshot.data != null ? HomeView() : SplashScreenView(),
             );
           } else {
             return const LoadingView();

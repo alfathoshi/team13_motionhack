@@ -8,9 +8,9 @@ import 'package:motionhack/app/controllers/auth_controller.dart';
 import '../controllers/sign_in_controller.dart';
 
 class SignInView extends GetView<SignInController> {
-  final emailC = TextEditingController();
-  final passC = TextEditingController();
-  final authC = Get.find<AuthController>();
+  final emailC = TextEditingController(text: 'admin@gmail.com');
+  final passC = TextEditingController(text: 'admin01');
+  final authC = Get.put(AuthController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
