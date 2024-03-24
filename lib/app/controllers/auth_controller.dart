@@ -7,7 +7,23 @@ class AuthController extends GetxController {
 
   Stream<User?> get streamAuthStatus => auth.authStateChanges();
 
-  void signin() {}
+  void signin(String email, String pass) async {
+    try {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: pass,
+      );
+      Get.offAllNamed(Routes.SIGN_IN);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
 
   void login(String email, String pass) async {
     try {

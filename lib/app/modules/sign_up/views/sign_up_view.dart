@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:motionhack/app/controllers/auth_controller.dart';
+import 'package:motionhack/app/routes/app_pages.dart';
 
 import '../controllers/sign_up_controller.dart';
 
 class SignUpView extends GetView<SignUpController> {
-  final emailC = TextEditingController(text: 'admin@gmail.com');
-  final passC = TextEditingController(text: 'admin01');
+  final emailC = TextEditingController();
+  final passC = TextEditingController();
   final confirmPassC = TextEditingController();
   final authC = Get.put(AuthController());
   @override
@@ -98,7 +99,7 @@ class SignUpView extends GetView<SignUpController> {
                     height: 68,
                   ),
                   ElevatedButton(
-                    onPressed: () => authC.signin(),
+                    onPressed: () => authC.signin(emailC.text, passC.text),
                     style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFFc4c4c4),
                         foregroundColor: Colors.white,
@@ -155,28 +156,30 @@ class SignUpView extends GetView<SignUpController> {
               ),
             ),
           ),
-          // Padding(
-          //   padding: const EdgeInsets.symmetric(vertical: 16),
-          //   child: Column(
-          //     children: [
-          //       const Divider(),
-          //       Text.rich(
-          //         TextSpan(
-          //           text: "Belum punya akun? ",
-          //           style: GoogleFonts.poppins(),
-          //           children: const [
-          //             TextSpan(
-          //               text: "Daftar.",
-          //               style: TextStyle(
-          //                   color: Color(0xff60ABEE),
-          //                   fontWeight: FontWeight.bold),
-          //             ),
-          //           ],
-          //         ),
-          //       ),
-          //     ],
-          //   ),
-          // )
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16),
+            child: Column(
+              children: [
+                const Divider(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Sudah punya akun? ',
+                      style: GoogleFonts.poppins(),
+                    ),
+                    GestureDetector(
+                      onTap: () => Get.toNamed(Routes.SIGN_IN),
+                      child: Text(
+                        'Masuk',
+                        style: GoogleFonts.poppins(color: Color(0xFF60ABEE)),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          )
         ],
       ),
     );
