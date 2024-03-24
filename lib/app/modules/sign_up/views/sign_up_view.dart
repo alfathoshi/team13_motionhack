@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:motionhack/app/controllers/auth_controller.dart';
-import 'package:motionhack/app/routes/app_pages.dart';
 
-import '../controllers/sign_in_controller.dart';
+import '../controllers/sign_up_controller.dart';
 
-class SignInView extends GetView<SignInController> {
+class SignUpView extends GetView<SignUpController> {
   final emailC = TextEditingController(text: 'admin@gmail.com');
   final passC = TextEditingController(text: 'admin01');
+  final confirmPassC = TextEditingController();
   final authC = Get.put(AuthController());
   @override
   Widget build(BuildContext context) {
@@ -28,14 +27,14 @@ class SignInView extends GetView<SignInController> {
                     height: 120,
                   ),
                   Text(
-                    'Selamat Datang',
+                    'Buat Akun',
                     style: GoogleFonts.poppins(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
                     ),
                   ),
                   Text(
-                    'Masuk untuk memulai',
+                    'Mulai perjalananmu untuk cegah stunting',
                     style: GoogleFonts.poppins(
                       fontSize: 14,
                     ),
@@ -79,21 +78,27 @@ class SignInView extends GetView<SignInController> {
                   const SizedBox(
                     height: 16,
                   ),
-                  Text(
-                    'Forgot Password?',
-                    style: GoogleFonts.poppins(
-                      textStyle: const TextStyle(
-                        decoration: TextDecoration.underline,
-                        decorationColor: Color(0xFF60ABEE),
-                        color: Color(0xFF60ABEE),
+                  TextField(
+                    controller: confirmPassC,
+                    decoration: InputDecoration(
+                      hintText: 'Konfirmasi Password',
+                      hintStyle: const TextStyle(color: Color(0xFFc4c4c4)),
+                      suffixIcon: const Icon(Icons.remove_red_eye),
+                      suffixIconColor: const Color(0xFFc4c4c4),
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide:
+                              const BorderSide(color: Color(0xFFc4c4c4))),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
                       ),
                     ),
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 68,
                   ),
                   ElevatedButton(
-                    onPressed: () => authC.login(emailC.text, passC.text),
+                    onPressed: () => authC.signin(),
                     style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFFc4c4c4),
                         foregroundColor: Colors.white,
@@ -104,7 +109,7 @@ class SignInView extends GetView<SignInController> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10))),
                     child: Text(
-                      'Masuk',
+                      'Daftar',
                       style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -150,30 +155,28 @@ class SignInView extends GetView<SignInController> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16),
-            child: Column(
-              children: [
-                const Divider(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Belum punya akun? ',
-                      style: GoogleFonts.poppins(),
-                    ),
-                    GestureDetector(
-                      onTap: () => Get.toNamed(Routes.SIGN_UP),
-                      child: Text(
-                        'Daftar',
-                        style: GoogleFonts.poppins(color: Color(0xFF60ABEE)),
-                      ),
-                    ),
-                  ],
-                )
-              ],
-            ),
-          )
+          // Padding(
+          //   padding: const EdgeInsets.symmetric(vertical: 16),
+          //   child: Column(
+          //     children: [
+          //       const Divider(),
+          //       Text.rich(
+          //         TextSpan(
+          //           text: "Belum punya akun? ",
+          //           style: GoogleFonts.poppins(),
+          //           children: const [
+          //             TextSpan(
+          //               text: "Daftar.",
+          //               style: TextStyle(
+          //                   color: Color(0xff60ABEE),
+          //                   fontWeight: FontWeight.bold),
+          //             ),
+          //           ],
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // )
         ],
       ),
     );
