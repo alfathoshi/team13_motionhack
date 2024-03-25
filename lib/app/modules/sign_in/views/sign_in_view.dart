@@ -9,7 +9,7 @@ import 'package:motionhack/app/routes/app_pages.dart';
 import '../controllers/sign_in_controller.dart';
 
 class SignInView extends GetView<SignInController> {
-  final authC = Get.put(AuthController());
+  final authC = Get.find<AuthController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,7 +62,7 @@ class SignInView extends GetView<SignInController> {
                     height: 16,
                   ),
                   TextField(
-                     onChanged: (value) {
+                    onChanged: (value) {
                       controller.isEmpty();
                     },
                     controller: controller.passC,
@@ -100,8 +100,9 @@ class SignInView extends GetView<SignInController> {
                         onPressed: () => authC.login(
                             controller.emailC.text, controller.passC.text),
                         style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                controller.isButtonActive.value ? Color(0xFFc4c4c4) : Colors.blue,
+                            backgroundColor: controller.isButtonActive.value
+                                ? Color(0xFFc4c4c4)
+                                : Colors.blue,
                             foregroundColor: Colors.white,
                             minimumSize: const Size(
                               double.infinity,
@@ -123,7 +124,9 @@ class SignInView extends GetView<SignInController> {
                     height: 24,
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      authC.signInWithGoogle();
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
                       foregroundColor: Colors.black,

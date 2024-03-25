@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:motionhack/app/routes/app_pages.dart';
 
 class AuthController extends GetxController {
@@ -41,5 +42,14 @@ class AuthController extends GetxController {
   void logout() async {
     await auth.signOut();
     Get.offAllNamed(Routes.SIGN_IN);
+  }
+
+  void signInWithGoogle() async {
+    final GoogleSignInAccount? gUser = await GoogleSignIn().signIn();
+    final GoogleSignInAuthentication gAuth = await gUser!.authentication;
+    final credential = GoogleAuthProvider.credential(
+        accessToken: gAuth.accessToken, idToken: gAuth.idToken);
+    await auth.signInWithCredential(credential);
+    Get.offAllNamed(Routes.NAVIGATION_BAR);
   }
 }

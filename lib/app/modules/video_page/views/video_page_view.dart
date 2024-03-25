@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-import 'package:motionhack/app/modules/article_page/views/article_page_view.dart';
 import 'package:motionhack/app/utils/video_card.dart';
 
 import '../controllers/video_page_controller.dart';

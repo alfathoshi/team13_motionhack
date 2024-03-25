@@ -10,25 +10,34 @@ class ArticleCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
       child: Container(
         height: 149,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             boxShadow: [
-              BoxShadow(color: Colors.grey, blurRadius: 6, offset: Offset(6, 8))
+              BoxShadow(
+                  color: Colors.grey.shade300,
+                  offset: const Offset(0, 4),
+                  blurRadius: 7,
+                  spreadRadius: 1),
+              const BoxShadow(
+                  color: Colors.white,
+                  offset: Offset(0, -4),
+                  blurRadius: 7,
+                  spreadRadius: 1)
             ],
             color: Colors.white),
         child: Row(
           children: [
             Container(
               width: 148,
-              child: Text(
+              child: const Text(
                 "Image",
                 textAlign: TextAlign.center,
               ),
             ),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             Container(
               width: 200,
               child: Column(
@@ -42,7 +51,7 @@ class ArticleCard extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       maxLines: 3,
                       style: GoogleFonts.poppins(
-                          textStyle: TextStyle(
+                          textStyle: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 14,
                               color: Colors.black)),
@@ -55,13 +64,13 @@ class ArticleCard extends StatelessWidget {
                     maxLines: 2,
                     style: GoogleFonts.poppins(
                         textStyle:
-                            TextStyle(fontSize: 13, color: Colors.black)),
+                            const TextStyle(fontSize: 13, color: Colors.black)),
                   ),
                   Text(
                     "detik.com",
                     style: GoogleFonts.poppins(
-                        textStyle:
-                            TextStyle(fontSize: 10, color: Color(0xff88c0f2))),
+                        textStyle: const TextStyle(
+                            fontSize: 10, color: Color(0xff88c0f2))),
                   )
                 ],
               ),
