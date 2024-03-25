@@ -8,7 +8,7 @@ import 'package:motionhack/app/routes/app_pages.dart';
 import '../controllers/sign_up_controller.dart';
 
 class SignUpView extends GetView<SignUpController> {
-  final authC = Get.put(AuthController());
+  final authC = Get.find<AuthController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,6 +39,26 @@ class SignUpView extends GetView<SignUpController> {
                   ),
                   const SizedBox(
                     height: 20,
+                  ),
+                  TextField(
+                    onChanged: (value) {
+                      controller.isEmpty();
+                    },
+                    controller: controller.usernameC,
+                    decoration: InputDecoration(
+                      hintText: 'Username',
+                      hintStyle: const TextStyle(color: Color(0xFFc4c4c4)),
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide:
+                              const BorderSide(color: Color(0xFFc4c4c4))),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 16,
                   ),
                   TextField(
                     onChanged: (value) {
@@ -106,7 +126,10 @@ class SignUpView extends GetView<SignUpController> {
                   ),
                   Obx(() => ElevatedButton(
                         onPressed: () => authC.signin(
-                            controller.emailC.text, controller.passC.text),
+                          controller.emailC.text,
+                          controller.passC.text,
+                          controller.usernameC.text,
+                        ), 
                         style: ElevatedButton.styleFrom(
                             backgroundColor: controller.isButtonActive.value
                                 ? Color(0xFFc4c4c4)

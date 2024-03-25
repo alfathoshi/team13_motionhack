@@ -10,6 +10,7 @@ import 'app/routes/app_pages.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,9 +31,10 @@ class MyApp extends StatelessWidget {
             return GetMaterialApp(
               debugShowCheckedModeBanner: false,
               title: "Application",
-              // initialRoute: Routes.NAVIGATION_BAR,
-              initialRoute: 
-                  snapshot.data != null ? Routes.NAVIGATION_BAR : Routes.SPLASH_SCREEN,
+              // initialRoute: Routes.SIGN_UP,
+              initialRoute: snapshot.data != null
+                  ? Routes.NAVIGATION_BAR
+                  : Routes.SPLASH_SCREEN,
               getPages: AppPages.routes,
             );
           } else {

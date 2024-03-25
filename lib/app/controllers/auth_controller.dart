@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -8,12 +9,14 @@ class AuthController extends GetxController {
 
   Stream<User?> get streamAuthStatus => auth.authStateChanges();
 
-  void signin(String email, String pass) async {
+  void signin(String email, String pass, String username) async {
     try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      UserCredential userCredential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: pass,
       );
+      createUserDocument(userCredential, username);
       Get.offAllNamed(Routes.SIGN_IN);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -23,6 +26,27 @@ class AuthController extends GetxController {
       }
     } catch (e) {
       print(e);
+    }
+  }
+
+  // void createUserDocument(String username, String email) {
+  //   final newUsers = {
+  //     'username': username,
+  //     'email': email,
+  //   };
+  //   FirebaseFirestore.instance.collection('users').add(newUsers);
+  // }
+
+  Future<void> createUserDocument(
+      UserCredential? userCredential, String username) async {
+    if (userCredential != null && userCredential.user != null) {
+      await FirebaseFirestore.instance
+          .collection("users")
+          .doc(userCredential.user!.email)
+          .set({
+        'email': userCredential.user!.email,
+        'username': username,
+      });
     }
   }
 

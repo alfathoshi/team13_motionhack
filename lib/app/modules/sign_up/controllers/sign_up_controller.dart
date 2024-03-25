@@ -4,12 +4,14 @@ import 'package:get/get.dart';
 class SignUpController extends GetxController {
   late TextEditingController emailC;
   late TextEditingController passC;
+  late TextEditingController usernameC;
   late TextEditingController confirmPassC;
   var isButtonActive = true.obs;
 
   void isEmpty() {
     if (passC.text.isNotEmpty &&
-        passC.text.isNotEmpty &&
+        emailC.text.isNotEmpty &&
+        usernameC.text.isNotEmpty &&
         confirmPassC.text.isNotEmpty) {
       isButtonActive(false);
     } else {
@@ -22,6 +24,7 @@ class SignUpController extends GetxController {
     // TODO: implement onInit
     emailC = TextEditingController();
     passC = TextEditingController();
+    usernameC = TextEditingController();
     confirmPassC = TextEditingController();
     super.onInit();
   }
@@ -29,6 +32,7 @@ class SignUpController extends GetxController {
   @override
   void onClose() {
     // TODO: implement onClose
+    usernameC.dispose();
     emailC.dispose();
     passC.dispose();
     confirmPassC.dispose();

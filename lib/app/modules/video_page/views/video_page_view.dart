@@ -11,7 +11,7 @@ class VideoPageView extends GetView<VideoPageController> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-        backgroundColor: Color(0xFFf8f8f8),
+        backgroundColor: Colors.white,
         
         body: SingleChildScrollView(
           child: Column(
