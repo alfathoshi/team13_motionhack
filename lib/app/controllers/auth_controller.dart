@@ -28,7 +28,7 @@ class AuthController extends GetxController {
   void login(String email, String pass) async {
     try {
       await auth.signInWithEmailAndPassword(email: email, password: pass);
-      Get.offAllNamed(Routes.HOME);
+      Get.offAllNamed(Routes.NAVIGATION_BAR);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
