@@ -5,11 +5,7 @@ class NavigationBarController extends GetxController {
   var profile = true.obs;
   void changeIndex(int index) {
     selectedindex.value = index;
-    if (selectedindex.value == 3) {
-      profile.value = false;
-    } else {
-      profile.value = true;
-    }
+    
   }
 
 }
