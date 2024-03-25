@@ -8,9 +8,6 @@ import 'package:motionhack/app/routes/app_pages.dart';
 import '../controllers/sign_up_controller.dart';
 
 class SignUpView extends GetView<SignUpController> {
-  final emailC = TextEditingController();
-  final passC = TextEditingController();
-  final confirmPassC = TextEditingController();
   final authC = Get.put(AuthController());
   @override
   Widget build(BuildContext context) {
@@ -44,7 +41,10 @@ class SignUpView extends GetView<SignUpController> {
                     height: 20,
                   ),
                   TextField(
-                    controller: emailC,
+                    onChanged: (value) {
+                      controller.isEmpty();
+                    },
+                    controller: controller.emailC,
                     decoration: InputDecoration(
                       hintText: 'Email',
                       hintStyle: const TextStyle(color: Color(0xFFc4c4c4)),
@@ -61,7 +61,10 @@ class SignUpView extends GetView<SignUpController> {
                     height: 16,
                   ),
                   TextField(
-                    controller: passC,
+                    onChanged: (value) {
+                      controller.isEmpty();
+                    },
+                    controller: controller.passC,
                     decoration: InputDecoration(
                       hintText: 'Password',
                       hintStyle: const TextStyle(color: Color(0xFFc4c4c4)),
@@ -80,7 +83,10 @@ class SignUpView extends GetView<SignUpController> {
                     height: 16,
                   ),
                   TextField(
-                    controller: confirmPassC,
+                    onChanged: (value) {
+                      controller.isEmpty();
+                    },
+                    controller: controller.confirmPassC,
                     decoration: InputDecoration(
                       hintText: 'Konfirmasi Password',
                       hintStyle: const TextStyle(color: Color(0xFFc4c4c4)),
@@ -98,22 +104,26 @@ class SignUpView extends GetView<SignUpController> {
                   const SizedBox(
                     height: 68,
                   ),
-                  ElevatedButton(
-                    onPressed: () => authC.signin(emailC.text, passC.text),
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFFc4c4c4),
-                        foregroundColor: Colors.white,
-                        minimumSize: const Size(
-                          double.infinity,
-                          44,
+                  Obx(() => ElevatedButton(
+                        onPressed: () => authC.signin(
+                            controller.emailC.text, controller.passC.text),
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: controller.isButtonActive.value
+                                ? Color(0xFFc4c4c4)
+                                : Colors.blue,
+                            foregroundColor: Colors.white,
+                            minimumSize: const Size(
+                              double.infinity,
+                              44,
+                            ),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10))),
+                        child: Text(
+                          'Daftar',
+                          style:
+                              GoogleFonts.poppins(fontWeight: FontWeight.bold),
                         ),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10))),
-                    child: Text(
-                      'Daftar',
-                      style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
-                    ),
-                  ),
+                      )),
                   const SizedBox(
                     height: 24,
                   ),

@@ -9,8 +9,6 @@ import 'package:motionhack/app/routes/app_pages.dart';
 import '../controllers/sign_in_controller.dart';
 
 class SignInView extends GetView<SignInController> {
-  final emailC = TextEditingController();
-  final passC = TextEditingController();
   final authC = Get.put(AuthController());
   @override
   Widget build(BuildContext context) {
@@ -44,7 +42,10 @@ class SignInView extends GetView<SignInController> {
                     height: 20,
                   ),
                   TextField(
-                    controller: emailC,
+                    onChanged: (value) {
+                      controller.isEmpty();
+                    },
+                    controller: controller.emailC,
                     decoration: InputDecoration(
                       hintText: 'Email',
                       hintStyle: const TextStyle(color: Color(0xFFc4c4c4)),
@@ -61,7 +62,10 @@ class SignInView extends GetView<SignInController> {
                     height: 16,
                   ),
                   TextField(
-                    controller: passC,
+                     onChanged: (value) {
+                      controller.isEmpty();
+                    },
+                    controller: controller.passC,
                     decoration: InputDecoration(
                       hintText: 'Password',
                       hintStyle: const TextStyle(color: Color(0xFFc4c4c4)),
@@ -92,22 +96,25 @@ class SignInView extends GetView<SignInController> {
                   const SizedBox(
                     height: 20,
                   ),
-                  ElevatedButton(
-                    onPressed: () => authC.login(emailC.text, passC.text),
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFFc4c4c4),
-                        foregroundColor: Colors.white,
-                        minimumSize: const Size(
-                          double.infinity,
-                          44,
+                  Obx(() => ElevatedButton(
+                        onPressed: () => authC.login(
+                            controller.emailC.text, controller.passC.text),
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor:
+                                controller.isButtonActive.value ? Color(0xFFc4c4c4) : Colors.blue,
+                            foregroundColor: Colors.white,
+                            minimumSize: const Size(
+                              double.infinity,
+                              44,
+                            ),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10))),
+                        child: Text(
+                          'Masuk',
+                          style:
+                              GoogleFonts.poppins(fontWeight: FontWeight.bold),
                         ),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10))),
-                    child: Text(
-                      'Masuk',
-                      style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
-                    ),
-                  ),
+                      )),
                   const SizedBox(
                     height: 24,
                   ),
