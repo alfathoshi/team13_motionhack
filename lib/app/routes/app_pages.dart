@@ -45,7 +45,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.VIDEO_PAGE,
-      page: () => const VideoPageView(),
+      page: () => VideoPageView(),
       binding: VideoPageBinding(),
     ),
     GetPage(

@@ -5,39 +5,39 @@ import 'package:google_fonts/google_fonts.dart';
 class ArticleCard extends StatelessWidget {
   const ArticleCard({
     super.key,
+    required this.id,
+    required this.title,
+    required this.description,
+    required this.sourceTitle,
   });
+
+  final String id;
+  final String title;
+  final String description;
+  final String sourceTitle;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
       child: Container(
         height: 149,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             boxShadow: [
-              BoxShadow(
-                  color: Colors.grey.shade300,
-                  offset: const Offset(0, 4),
-                  blurRadius: 7,
-                  spreadRadius: 1),
-              const BoxShadow(
-                  color: Colors.white,
-                  offset: Offset(0, -4),
-                  blurRadius: 7,
-                  spreadRadius: 1)
+              BoxShadow(color: Colors.grey, blurRadius: 6, offset: Offset(6, 8))
             ],
             color: Colors.white),
         child: Row(
           children: [
             Container(
               width: 148,
-              child: const Text(
+              child: Text(
                 "Image",
                 textAlign: TextAlign.center,
               ),
             ),
-            const SizedBox(width: 10),
+            SizedBox(width: 10),
             Container(
               width: 200,
               child: Column(
@@ -46,31 +46,31 @@ class ArticleCard extends StatelessWidget {
                 children: [
                   Container(
                     child: Text(
-                      "Optimalkan Pertumbuhan: Peran Penting Konsumsi Tablet Tambahan Darah",
+                      title,
                       softWrap: true,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 3,
                       style: GoogleFonts.poppins(
-                          textStyle: const TextStyle(
+                          textStyle: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 14,
                               color: Colors.black)),
                     ),
                   ),
                   Text(
-                    "Mencegah buah hati stunting pada Ibu Hamil ",
+                    description,
                     softWrap: true,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
                     style: GoogleFonts.poppins(
                         textStyle:
-                            const TextStyle(fontSize: 13, color: Colors.black)),
+                            TextStyle(fontSize: 13, color: Colors.black)),
                   ),
                   Text(
-                    "detik.com",
+                    sourceTitle,
                     style: GoogleFonts.poppins(
-                        textStyle: const TextStyle(
-                            fontSize: 10, color: Color(0xff88c0f2))),
+                        textStyle:
+                            TextStyle(fontSize: 10, color: Color(0xff88c0f2))),
                   )
                 ],
               ),
