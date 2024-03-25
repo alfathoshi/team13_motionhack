@@ -65,6 +65,7 @@ class SignInView extends GetView<SignInController> {
                     onChanged: (value) {
                       controller.isEmpty();
                     },
+                    obscureText: true,
                     controller: controller.passC,
                     decoration: InputDecoration(
                       hintText: 'Password',

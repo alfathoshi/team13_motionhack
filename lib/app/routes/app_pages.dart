@@ -8,6 +8,8 @@ import 'package:motionhack/app/modules/education/bindings/education_binding.dart
 import 'package:motionhack/app/modules/education/views/education_view.dart';
 import 'package:motionhack/app/modules/navigation_bar/bindings/navigation_bar_binding.dart';
 import 'package:motionhack/app/modules/navigation_bar/views/navigation_bar_view.dart';
+import 'package:motionhack/app/modules/post_community/bindings/post_community_binding.dart';
+import 'package:motionhack/app/modules/post_community/views/post_community_view.dart';
 import 'package:motionhack/app/modules/sign_up/bindings/sign_up_binding.dart';
 import 'package:motionhack/app/modules/sign_up/views/sign_up_view.dart';
 
@@ -72,6 +74,11 @@ class AppPages {
       name: _Paths.COMMUNITY,
       page: () => CommunityView(),
       binding: CommunityBinding(),
+    ),
+    GetPage(
+      name: _Paths.POST_COMMUNITY,
+      page: () => PostCommunityView(),
+      binding: PostCommunityBinding(),
     ),
   ];
 }

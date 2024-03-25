@@ -84,6 +84,7 @@ class SignUpView extends GetView<SignUpController> {
                     onChanged: (value) {
                       controller.isEmpty();
                     },
+                    obscureText: true,
                     controller: controller.passC,
                     decoration: InputDecoration(
                       hintText: 'Password',
@@ -106,6 +107,7 @@ class SignUpView extends GetView<SignUpController> {
                     onChanged: (value) {
                       controller.isEmpty();
                     },
+                    obscureText: true,
                     controller: controller.confirmPassC,
                     decoration: InputDecoration(
                       hintText: 'Konfirmasi Password',
@@ -129,7 +131,7 @@ class SignUpView extends GetView<SignUpController> {
                           controller.emailC.text,
                           controller.passC.text,
                           controller.usernameC.text,
-                        ), 
+                        ),
                         style: ElevatedButton.styleFrom(
                             backgroundColor: controller.isButtonActive.value
                                 ? Color(0xFFc4c4c4)
