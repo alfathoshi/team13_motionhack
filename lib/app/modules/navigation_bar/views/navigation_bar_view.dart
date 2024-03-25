@@ -5,6 +5,8 @@ import 'package:motionhack/app/modules/community/views/community_view.dart';
 import 'package:motionhack/app/modules/consultation/views/consultation_view.dart';
 import 'package:motionhack/app/modules/education/views/education_view.dart';
 import 'package:motionhack/app/modules/home/views/home_view.dart';
+import 'package:motionhack/app/modules/post_community/views/post_community_view.dart';
+import 'package:motionhack/app/routes/app_pages.dart';
 
 import '../controllers/navigation_bar_controller.dart';
 
@@ -13,7 +15,7 @@ class NavigationBarView extends GetView<NavigationBarController> {
     HomeView(),
     EducationView(),
     ConsultationView(),
-    CommunityView()
+    CommunityView(),
   ];
 
   @override
@@ -32,15 +34,11 @@ class NavigationBarView extends GetView<NavigationBarController> {
           selectedItemColor: const Color(0xFF60ABEE),
           type: BottomNavigationBarType.fixed,
           items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Beranda'),
             BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Beranda'),
+                icon: Icon(Icons.library_books), label: 'Edukasi'),
             BottomNavigationBarItem(
-                icon: Icon(Icons.library_books),
-                label: 'Edukasi'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.chair),
-                label: 'Konsultasi'),
+                icon: Icon(Icons.chair), label: 'Konsultasi'),
             BottomNavigationBarItem(
               icon: Icon(Icons.people),
               label: 'Komunitas',
@@ -48,6 +46,22 @@ class NavigationBarView extends GetView<NavigationBarController> {
           ],
         ),
       ),
+      floatingActionButton: MediaQuery.of(context).viewInsets.bottom != 0
+          ? null
+          : Obx(() => Visibility(
+                visible: controller.community.value,
+                child: FloatingActionButton(
+                  onPressed: () {
+                    Get.toNamed(Routes.POST_COMMUNITY);
+                  },
+                  foregroundColor: Colors.white,
+                  backgroundColor: const Color(0xFF60ABEE),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  child: const Icon(Icons.add),
+                ),
+              )),
     );
   }
 }

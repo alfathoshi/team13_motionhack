@@ -26,6 +26,7 @@ class CommunityView extends GetView<CommunityController> {
           }),
         ),
       ),
+      
     );
   }
 }
