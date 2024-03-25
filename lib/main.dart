@@ -30,8 +30,9 @@ class MyApp extends StatelessWidget {
             return GetMaterialApp(
               debugShowCheckedModeBanner: false,
               title: "Application",
-              initialRoute: Routes.SIGN_IN,
-                  // snapshot.data != null ? Routes.HOME : Routes.SPLASH_SCREEN,
+              initialRoute: Routes.NAVIGATION_BAR,
+              // initialRoute: 
+                  // snapshot.data != null ? Routes.NAVIGATION_BAR : Routes.SPLASH_SCREEN,
               getPages: AppPages.routes,
               // home: OnboardingView(),
             );

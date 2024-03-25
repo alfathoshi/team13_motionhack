@@ -9,6 +9,10 @@ abstract class Routes {
   static const SIGN_IN = _Paths.SIGN_IN;
   static const VIDEO_PAGE = _Paths.VIDEO_PAGE;
   static const SIGN_UP = _Paths.SIGN_UP;
+  static const NAVIGATION_BAR = _Paths.NAVIGATION_BAR;
+  static const EDUCATION = _Paths.EDUCATION;
+  static const CONSULTATION = _Paths.CONSULTATION;
+  static const COMMUNITY = _Paths.COMMUNITY;
 }
 
 abstract class _Paths {
@@ -17,4 +21,8 @@ abstract class _Paths {
   static const SIGN_IN = '/sign-in';
   static const VIDEO_PAGE = '/video-page';
   static const SIGN_UP = '/sign-up';
+  static const NAVIGATION_BAR = '/navigation-bar';
+  static const EDUCATION = '/education';
+  static const CONSULTATION = '/consultation';
+  static const COMMUNITY = '/community';
 }

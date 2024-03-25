@@ -1,5 +1,13 @@
 import 'package:get/get.dart';
 
+import 'package:motionhack/app/modules/community/bindings/community_binding.dart';
+import 'package:motionhack/app/modules/community/views/community_view.dart';
+import 'package:motionhack/app/modules/consultation/bindings/consultation_binding.dart';
+import 'package:motionhack/app/modules/consultation/views/consultation_view.dart';
+import 'package:motionhack/app/modules/education/bindings/education_binding.dart';
+import 'package:motionhack/app/modules/education/views/education_view.dart';
+import 'package:motionhack/app/modules/navigation_bar/bindings/navigation_bar_binding.dart';
+import 'package:motionhack/app/modules/navigation_bar/views/navigation_bar_view.dart';
 import 'package:motionhack/app/modules/sign_up/bindings/sign_up_binding.dart';
 import 'package:motionhack/app/modules/sign_up/views/sign_up_view.dart';
 
@@ -44,6 +52,26 @@ class AppPages {
       name: _Paths.SIGN_UP,
       page: () => SignUpView(),
       binding: SignUpBinding(),
+    ),
+    GetPage(
+      name: _Paths.NAVIGATION_BAR,
+      page: () => NavigationBarView(),
+      binding: NavigationBarBinding(),
+    ),
+    GetPage(
+      name: _Paths.EDUCATION,
+      page: () => EducationView(),
+      binding: EducationBinding(),
+    ),
+    GetPage(
+      name: _Paths.CONSULTATION,
+      page: () => ConsultationView(),
+      binding: ConsultationBinding(),
+    ),
+    GetPage(
+      name: _Paths.COMMUNITY,
+      page: () => CommunityView(),
+      binding: CommunityBinding(),
     ),
   ];
 }
