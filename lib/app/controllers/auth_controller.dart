@@ -17,7 +17,7 @@ class AuthController extends GetxController {
         password: pass,
       );
       createUserDocument(userCredential, username);
-      Get.offAllNamed(Routes.SIGN_IN);
+      Get.offAllNamed(Routes.NAVIGATION_BAR);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');
