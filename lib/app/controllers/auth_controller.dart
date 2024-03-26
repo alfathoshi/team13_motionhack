@@ -29,14 +29,6 @@ class AuthController extends GetxController {
     }
   }
 
-  // void createUserDocument(String username, String email) {
-  //   final newUsers = {
-  //     'username': username,
-  //     'email': email,
-  //   };
-  //   FirebaseFirestore.instance.collection('users').add(newUsers);
-  // }
-
   Future<void> createUserDocument(
       UserCredential? userCredential, String username) async {
     if (userCredential != null && userCredential.user != null) {
@@ -73,7 +65,9 @@ class AuthController extends GetxController {
     final GoogleSignInAuthentication gAuth = await gUser!.authentication;
     final credential = GoogleAuthProvider.credential(
         accessToken: gAuth.accessToken, idToken: gAuth.idToken);
-    await auth.signInWithCredential(credential);
+    UserCredential userCredential = await auth.signInWithCredential(credential);
+    String username = gUser.email.substring(0, gUser.email.indexOf('@'));
+    createUserDocument(userCredential, username);
     Get.offAllNamed(Routes.NAVIGATION_BAR);
   }
 }

@@ -3,12 +3,18 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CommunityCard extends StatelessWidget {
-  CommunityCard({super.key});
+  final String username;
+  final String message;
+  CommunityCard({
+    super.key,
+    required this.message,
+    required this.username,
+  });
   final isLiked = false.obs;
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 205,
+      height: 180,
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -29,8 +35,9 @@ class CommunityCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Row(
+            Row(
               children: [
                 CircleAvatar(),
                 SizedBox(
@@ -39,8 +46,7 @@ class CommunityCard extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Mikhayla'),
-                    Text('Hari ini pada 20:27'),
+                    Text(username),
                   ],
                 )
               ],
@@ -48,9 +54,7 @@ class CommunityCard extends StatelessWidget {
             const SizedBox(
               height: 16,
             ),
-            const Text(
-              'Bagaimana cara mengenali tanda-tanda stunting pada anak-anak dan langkah-langkah yang dapat diambil untuk mengatasinya?',
-            ),
+            Text(message),
             const SizedBox(
               height: 9,
             ),
