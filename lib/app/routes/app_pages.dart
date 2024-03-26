@@ -16,6 +16,8 @@ import '../modules/navigation_bar/bindings/navigation_bar_binding.dart';
 import '../modules/navigation_bar/views/navigation_bar_view.dart';
 import '../modules/post_community/bindings/post_community_binding.dart';
 import '../modules/post_community/views/post_community_view.dart';
+import '../modules/reservation/bindings/reservation_binding.dart';
+import '../modules/reservation/views/reservation_view.dart';
 import '../modules/sign_in/bindings/sign_in_binding.dart';
 import '../modules/sign_in/views/sign_in_view.dart';
 import '../modules/sign_up/bindings/sign_up_binding.dart';
@@ -92,6 +94,11 @@ class AppPages {
       name: _Paths.ARTICLE_DETAIL,
       page: () => const ArticleDetailView(),
       binding: ArticleDetailBinding(),
+    ),
+    GetPage(
+      name: _Paths.RESERVATION,
+      page: () => ReservationView(),
+      binding: ReservationBinding(),
     ),
   ];
 }
