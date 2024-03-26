@@ -10,34 +10,34 @@ class ConsultantSchedule extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(35),
+      padding: const EdgeInsets.all(35),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             'Jadwal Konsultasi',
             style: GoogleFonts.poppins(
-                textStyle: TextStyle(
+                textStyle: const TextStyle(
                     fontSize: 15,
                     color: Colors.black,
                     fontWeight: FontWeight.bold)),
           ),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
           Text(
             'Hari ini tersedia.',
             style: GoogleFonts.poppins(
-                textStyle: TextStyle(
+                textStyle: const TextStyle(
               fontSize: 12,
               color: Colors.black,
             )),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Container(
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: Color(0xffe5f2ff)),
-            child: Row(
+                color: const Color(0xffe5f2ff)),
+            child: const Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 DateAndHours(day: 'Hari ini', hour: '09:00 - 19:00'),
@@ -46,13 +46,13 @@ class ConsultantSchedule extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Container(
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: Color(0xfff5f5f5)),
-            child: Column(
+                color: const Color(0xfff5f5f5)),
+            child: const Column(
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -86,7 +86,7 @@ class ConsultantSchedule extends StatelessWidget {
                   children: [
                     DateAndHours(day: 'Minggu', hour: 'Libur'),
                     SizedBox(width: 20),
-                    DateAndHours(day: 'Libur Nasional', hour: '13:00 - 14:00'),
+                    DateAndHours(day: 'Libur \nNasional', hour: '13:00 - 14:00'),
                   ],
                 ),
                 SizedBox(height: 15),
@@ -94,7 +94,7 @@ class ConsultantSchedule extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     DateAndHours(
-                        day: 'Sesi Istirahat Akhir Pekan', hour: 'Tidak Ada'),
+                        day: 'Sesi \nIstirahat', hour: 'Tidak Ada'),
                     SizedBox(width: 20),
                     DateAndHours(day: 'Sesi Istirahat', hour: '13:00 - 14:00'),
                   ],
@@ -126,16 +126,16 @@ class DateAndHours extends StatelessWidget {
         Text(
           day,
           style: GoogleFonts.poppins(
-              textStyle: TextStyle(
+              textStyle: const TextStyle(
                   fontSize: 12,
                   color: Colors.black,
                   fontWeight: FontWeight.bold)),
         ),
-        SizedBox(height: 3),
+        const SizedBox(height: 3),
         Text(
           hour,
           style: GoogleFonts.poppins(
-              textStyle: TextStyle(
+              textStyle: const TextStyle(
             fontSize: 11,
             color: Colors.black,
           )),

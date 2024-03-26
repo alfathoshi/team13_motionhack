@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
             return GetMaterialApp(
               debugShowCheckedModeBanner: false,
               title: "Application",
-              // initialRoute: Routes.POST_COMMUNITY,
+              // initialRoute: Routes.NAVIGATION_BAR,
               initialRoute: snapshot.data != null
                   ? Routes.NAVIGATION_BAR
                   : Routes.SPLASH_SCREEN,

@@ -17,7 +17,6 @@ class NavigationBarView extends GetView<NavigationBarController> {
     ConsultationView(),
     CommunityView(),
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

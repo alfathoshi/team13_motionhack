@@ -17,10 +17,10 @@ class PostCommunityController extends GetxController {
         .get();
   }
 
-  void postMessage(String username) {
+  void postMessage(String username, String menit, String jam) {
     if (askC.text.isNotEmpty) {
       String message = askC.text;
-      db.addPost(username, message);
+      db.addPost(username, message, menit, jam);
       askC.clear();
       Get.back();
       Get.back();

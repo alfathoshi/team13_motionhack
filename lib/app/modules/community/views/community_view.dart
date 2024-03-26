@@ -32,17 +32,21 @@ class CommunityView extends GetView<CommunityController> {
                 child: Text('No Data'),
               );
             }
+
             return ListView.builder(
               itemCount: posts.length,
               itemBuilder: (context, index) {
                 final post = posts[index];
                 String message = post['PostMessage'];
                 String username = post['UserName'];
+                Timestamp timestamp = post['TimeStamp'];
                 return Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
                   child: CommunityCard(
                     username: username,
                     message: message,
+                    menit: timestamp.toDate().minute.toString(),
+                    jam: timestamp.toDate().hour.toString(),
                   ),
                 );
               },
