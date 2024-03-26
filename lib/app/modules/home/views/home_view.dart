@@ -5,7 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:motionhack/app/controllers/auth_controller.dart';
-import 'package:motionhack/app/shared/widgets/home_card.dart';
+import 'package:motionhack/app/modules/profile/views/profile_view.dart';
 
 import '../controllers/home_controller.dart';
 

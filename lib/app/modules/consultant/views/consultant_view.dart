@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:motionhack/app/modules/reservation/views/reservation_view.dart';
 import 'package:motionhack/app/shared/widgets/about_consultant.dart';
 import 'package:motionhack/app/shared/widgets/consultant_review.dart';
 import 'package:motionhack/app/shared/widgets/consultant_schedule.dart';
@@ -142,7 +143,9 @@ class ConsultantView extends GetView<ConsultantController> {
                   borderRadius: BorderRadius.circular(5.0),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Get.to(ReservationView());
+              },
               child: Text(
                 'Reservasi',
                 style: GoogleFonts.poppins(
