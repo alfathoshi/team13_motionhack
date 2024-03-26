@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:motionhack/app/controllers/auth_controller.dart';
+import 'package:motionhack/app/shared/widgets/health_data.dart';
 
 import '../controllers/profile_controller.dart';
 
@@ -20,15 +22,15 @@ class ProfileView extends GetView<ProfileController> {
           ),
         ),
         body: Padding(
-          padding: EdgeInsets.all(15),
+          padding: const EdgeInsets.all(15),
           child: Center(
             child: Column(
               children: [
-                CircleAvatar(
+                const CircleAvatar(
                   radius: 60,
                   backgroundImage: AssetImage('assets/images/profilePict.png'),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 FutureBuilder(
                   future: authC.getData(),
                   builder: (context, snapshot) {
@@ -48,7 +50,7 @@ class ProfileView extends GetView<ProfileController> {
                                 textStyle: const TextStyle(
                                     fontSize: 19, fontWeight: FontWeight.bold)),
                           ),
-                          SizedBox(height: 5),
+                          const SizedBox(height: 5),
                           Text(
                             user['email'],
                             style: GoogleFonts.poppins(
@@ -57,11 +59,11 @@ class ProfileView extends GetView<ProfileController> {
                         ],
                       );
                     } else {
-                      return Text('No Data');
+                      return const Text('No Data');
                     }
                   },
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xff60abee),
@@ -78,19 +80,16 @@ class ProfileView extends GetView<ProfileController> {
                             fontSize: 15, fontWeight: FontWeight.bold)),
                   ),
                 ),
-                SizedBox(height: 70),
-                Container(
-                  height: 120,
-                  color: Colors.orange,
-                ),
-                SizedBox(height: 15),
+                const SizedBox(height: 56),
+                HealthData(),
+                const SizedBox(height: 15),
                 ListTile(
                   title: Text(
                     'Riwayat Catatan Perkembangan',
                     style: GoogleFonts.poppins(
                         textStyle: const TextStyle(fontSize: 15)),
                   ),
-                  trailing: Icon(Icons.arrow_right),
+                  trailing: const Icon(Icons.arrow_right),
                 ),
                 ListTile(
                   title: Text(
@@ -98,16 +97,21 @@ class ProfileView extends GetView<ProfileController> {
                     style: GoogleFonts.poppins(
                         textStyle: const TextStyle(fontSize: 15)),
                   ),
-                  trailing: Icon(Icons.arrow_right),
+                  trailing: const Icon(Icons.arrow_right),
                 ),
-                ListTile(
-                  title: Text(
-                    'Keluar',
-                    style: GoogleFonts.poppins(
-                        textStyle:
-                            const TextStyle(fontSize: 15, color: Colors.red)),
+                GestureDetector(
+                  onTap: () {
+                    authC.logout();
+                  },
+                  child: ListTile(
+                    title: Text(
+                      'Keluar',
+                      style: GoogleFonts.poppins(
+                          textStyle:
+                              const TextStyle(fontSize: 15, color: Colors.red)),
+                    ),
+                    trailing: const Icon(Icons.arrow_right),
                   ),
-                  trailing: Icon(Icons.arrow_right),
                 )
               ],
             ),
