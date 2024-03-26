@@ -89,13 +89,27 @@ class SignInView extends GetView<SignInController> {
                   const SizedBox(
                     height: 16,
                   ),
-                  Text(
-                    'Forgot Password?',
-                    style: GoogleFonts.poppins(
-                      textStyle: const TextStyle(
-                        decoration: TextDecoration.underline,
-                        decorationColor: Color(0xFF60ABEE),
-                        color: Color(0xFF60ABEE),
+                  InkWell(
+                    onTap: () {
+                      Get.defaultDialog(
+                          title: "On Development",
+                          middleText: "This feature is on development",
+                          confirmTextColor: Colors.white,
+                          buttonColor: Colors.lightBlue,
+                          onConfirm: () {
+                            Get.back();
+                          },
+                          textConfirm: "Okay",
+                          titleStyle: GoogleFonts.poppins());
+                    },
+                    child: Text(
+                      'Forgot Password?',
+                      style: GoogleFonts.poppins(
+                        textStyle: const TextStyle(
+                          decoration: TextDecoration.underline,
+                          decorationColor: Color(0xFF60ABEE),
+                          color: Color(0xFF60ABEE),
+                        ),
                       ),
                     ),
                   ),

@@ -5,7 +5,6 @@ import 'package:motionhack/app/modules/community/views/community_view.dart';
 import 'package:motionhack/app/modules/consultation/views/consultation_view.dart';
 import 'package:motionhack/app/modules/education/views/education_view.dart';
 import 'package:motionhack/app/modules/home/views/home_view.dart';
-import 'package:motionhack/app/modules/post_community/views/post_community_view.dart';
 import 'package:motionhack/app/routes/app_pages.dart';
 
 import '../controllers/navigation_bar_controller.dart';

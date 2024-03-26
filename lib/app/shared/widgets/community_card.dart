@@ -1,6 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -105,7 +103,18 @@ class CommunityCard extends StatelessWidget {
                       CircleAvatar(
                         backgroundColor: Colors.grey.shade200,
                         child: IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.defaultDialog(
+                                title: "On Development",
+                                middleText: "This feature is on development",
+                                confirmTextColor: Colors.white,
+                                buttonColor: Colors.lightBlue,
+                                onConfirm: () {
+                                  Get.back();
+                                },
+                                textConfirm: "Okay",
+                                titleStyle: GoogleFonts.poppins());
+                          },
                           icon: const Icon(
                             Icons.mode_comment,
                             color: Colors.grey,

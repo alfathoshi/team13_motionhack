@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:motionhack/app/controllers/auth_controller.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../controllers/reservation_controller.dart';
 
 class ReservationView extends GetView<ReservationController> {
   ReservationView({Key? key}) : super(key: key);
+  final authC = Get.find<AuthController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,12 +26,27 @@ class ReservationView extends GetView<ReservationController> {
         child: Column(
           children: [
             ListTile(
-              contentPadding: EdgeInsets.all(13),
-              title: Text(
-                'Mikhayla',
-                style: GoogleFonts.poppins(
-                    textStyle: const TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.black)),
+              contentPadding: const EdgeInsets.all(13),
+              title: FutureBuilder(
+                future: authC.getData(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else if (snapshot.hasError) {
+                    return Text("${snapshot.error}");
+                  } else if (snapshot.hasData) {
+                    Map<String, dynamic>? user = snapshot.data!.data();
+                    return Text(
+                      user!['username'],
+                      style: GoogleFonts.poppins(
+                          fontSize: 18, fontWeight: FontWeight.bold),
+                    );
+                  } else {
+                    return const Text('No Data');
+                  }
+                },
               ),
               trailing: ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -39,7 +55,18 @@ class ReservationView extends GetView<ReservationController> {
                     borderRadius: BorderRadius.circular(5.0),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Get.defaultDialog(
+                      title: "On Development",
+                      middleText: "This feature is on development",
+                      confirmTextColor: Colors.white,
+                      buttonColor: Colors.lightBlue,
+                      onConfirm: () {
+                        Get.back();
+                      },
+                      textConfirm: "Okay",
+                      titleStyle: GoogleFonts.poppins());
+                },
                 child: Text(
                   'Ubah Data',
                   style: GoogleFonts.poppins(
@@ -48,9 +75,9 @@ class ReservationView extends GetView<ReservationController> {
                 ),
               ),
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             ExpansionTile(
-              childrenPadding: EdgeInsets.all(10),
+              childrenPadding: const EdgeInsets.all(10),
               title: Text(
                 'Jenis Layanan',
                 style: GoogleFonts.poppins(
@@ -59,14 +86,14 @@ class ReservationView extends GetView<ReservationController> {
               ),
               expandedCrossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 Text(
                   'Pilih jenis layanan untuk konsultasi',
                   style: GoogleFonts.poppins(
                       textStyle:
                           const TextStyle(color: Colors.black, fontSize: 11)),
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 Container(
                   height: 44,
                   decoration: BoxDecoration(
@@ -74,12 +101,12 @@ class ReservationView extends GetView<ReservationController> {
                       border: Border.all(color: Colors.black)),
                   child: Row(
                     children: [
-                      SizedBox(width: 10),
-                      Icon(
+                      const SizedBox(width: 10),
+                      const Icon(
                         Icons.video_call_rounded,
                         color: Color(0xff26b860),
                       ),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                       Text(
                         'Layanan Video',
                         style: GoogleFonts.poppins(
@@ -89,7 +116,7 @@ class ReservationView extends GetView<ReservationController> {
                     ],
                   ),
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 Container(
                   height: 44,
                   decoration: BoxDecoration(
@@ -97,12 +124,12 @@ class ReservationView extends GetView<ReservationController> {
                       border: Border.all(color: Colors.black)),
                   child: Row(
                     children: [
-                      SizedBox(width: 10),
-                      Icon(
+                      const SizedBox(width: 10),
+                      const Icon(
                         Icons.video_call_rounded,
                         color: Color(0xff26b860),
                       ),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                       Text(
                         'Layanan Suara',
                         style: GoogleFonts.poppins(
@@ -112,7 +139,7 @@ class ReservationView extends GetView<ReservationController> {
                     ],
                   ),
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 Container(
                   height: 44,
                   decoration: BoxDecoration(
@@ -120,12 +147,12 @@ class ReservationView extends GetView<ReservationController> {
                       border: Border.all(color: Colors.black)),
                   child: Row(
                     children: [
-                      SizedBox(width: 10),
-                      Icon(
+                      const SizedBox(width: 10),
+                      const Icon(
                         Icons.video_call_rounded,
                         color: Color(0xff26b860),
                       ),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                       Text(
                         'Layanan Pesan',
                         style: GoogleFonts.poppins(
@@ -135,7 +162,7 @@ class ReservationView extends GetView<ReservationController> {
                     ],
                   ),
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 Text(
                   'Durasi layanan video	: 1 jam \nDurasi layanan suara	: 1 jam \nDurasi layanan pesan	: 24 jam',
                   style: GoogleFonts.poppins(
@@ -144,9 +171,9 @@ class ReservationView extends GetView<ReservationController> {
                 ),
               ],
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             ExpansionTile(
-              childrenPadding: EdgeInsets.all(10),
+              childrenPadding: const EdgeInsets.all(10),
               title: Text(
                 'Tanggal Konsultasi',
                 style: GoogleFonts.poppins(
@@ -155,20 +182,18 @@ class ReservationView extends GetView<ReservationController> {
               ),
               expandedCrossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  child: TableCalendar(
-                    headerStyle: HeaderStyle(
-                        formatButtonVisible: false, titleCentered: true),
-                    focusedDay: DateTime.now(),
-                    firstDay: DateTime.utc(2010, 10, 16),
-                    lastDay: DateTime.utc(2030, 3, 14),
-                  ),
+                TableCalendar(
+                  headerStyle: const HeaderStyle(
+                      formatButtonVisible: false, titleCentered: true),
+                  focusedDay: DateTime.now(),
+                  firstDay: DateTime.utc(2010, 10, 16),
+                  lastDay: DateTime.utc(2030, 3, 14),
                 )
               ],
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             ExpansionTile(
-              childrenPadding: EdgeInsets.all(10),
+              childrenPadding: const EdgeInsets.all(10),
               title: Text(
                 'Tanggal Konsultasi',
                 style: GoogleFonts.poppins(
@@ -176,7 +201,7 @@ class ReservationView extends GetView<ReservationController> {
                         fontWeight: FontWeight.bold, color: Colors.black)),
               ),
               expandedCrossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: const [
                 Wrap(
                   children: [
                     HourButton(

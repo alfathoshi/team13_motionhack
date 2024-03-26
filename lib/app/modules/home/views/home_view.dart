@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:motionhack/app/controllers/auth_controller.dart';
-import 'package:motionhack/app/modules/profile/views/profile_view.dart';
 import 'package:motionhack/app/routes/app_pages.dart';
 import 'package:motionhack/app/shared/widgets/health_data.dart';
 import 'package:motionhack/app/shared/widgets/home_card.dart';
@@ -44,7 +44,7 @@ class HomeView extends GetView<HomeController> {
                         fontSize: 18, fontWeight: FontWeight.bold),
                   );
                 } else {
-                  return Text('No Data');
+                  return const Text('No Data');
                 }
               },
             ),
@@ -103,7 +103,20 @@ class HomeView extends GetView<HomeController> {
             const SizedBox(
               height: 16,
             ),
-            HealthData(),
+            GestureDetector(
+                onTap: () {
+                  Get.defaultDialog(
+                      title: "On Development",
+                      middleText: "This feature is on development",
+                      confirmTextColor: Colors.white,
+                      buttonColor: Colors.lightBlue,
+                      onConfirm: () {
+                        Get.back();
+                      },
+                      textConfirm: "Okay",
+                      titleStyle: GoogleFonts.poppins());
+                },
+                child: HealthData()),
             Padding(
               padding: const EdgeInsets.only(left: 16, top: 16),
               child: Text('Rekomendasi',
@@ -112,29 +125,71 @@ class HomeView extends GetView<HomeController> {
                     fontSize: 13,
                   )),
             ),
-            HomeCard(
-              titleColor: Colors.blue,
-              color: Colors.lightBlue.shade100,
-              image: 'assets/images/home1.png',
-              rekomendasi: 'Untuk para orang tua!',
-              title:
-                  'Mengatasi Stunting: Peran \nPenting ASI Eksklusif dan \nPola Makan Sehat',
+            GestureDetector(
+              onTap: () {
+                Get.defaultDialog(
+                    title: "On Development",
+                    middleText: "This feature is on development",
+                    confirmTextColor: Colors.white,
+                    buttonColor: Colors.lightBlue,
+                    onConfirm: () {
+                      Get.back();
+                    },
+                    textConfirm: "Okay",
+                    titleStyle: GoogleFonts.poppins());
+              },
+              child: HomeCard(
+                titleColor: Colors.blue,
+                color: Colors.lightBlue.shade100,
+                image: 'assets/images/home1.png',
+                rekomendasi: 'Untuk para orang tua!',
+                title:
+                    'Mengatasi Stunting: Peran \nPenting ASI Eksklusif dan \nPola Makan Sehat',
+              ),
             ),
-            HomeCard(
-              titleColor: Colors.orange,
-              color: Colors.yellow.shade200,
-              image: 'assets/images/home1.png',
-              rekomendasi: 'Rekomendasi Terbaru',
-              title:
-                  'Berjuang melawan Stunting: \nLangkah-langkah Praktis bagi \nOrang Tua dan Komunitas',
+            GestureDetector(
+              onTap: () {
+                Get.defaultDialog(
+                    title: "On Development",
+                    middleText: "This feature is on development",
+                    confirmTextColor: Colors.white,
+                    buttonColor: Colors.lightBlue,
+                    onConfirm: () {
+                      Get.back();
+                    },
+                    textConfirm: "Okay",
+                    titleStyle: GoogleFonts.poppins());
+              },
+              child: HomeCard(
+                titleColor: Colors.orange,
+                color: Colors.yellow.shade200,
+                image: 'assets/images/home1.png',
+                rekomendasi: 'Rekomendasi Terbaru',
+                title:
+                    'Berjuang melawan Stunting: \nLangkah-langkah Praktis bagi \nOrang Tua dan Komunitas',
+              ),
             ),
-            HomeCard(
-              titleColor: Colors.purple,
-              color: Colors.purple.shade100,
-              image: 'assets/images/home1.png',
-              rekomendasi: 'Komunitas',
-              title:
-                  'Berbagi bersama Orang Tua \nLainnya untuk Berbagai \nInformasi Mengenai Stunting',
+            GestureDetector(
+              onTap: () {
+                Get.defaultDialog(
+                    title: "On Development",
+                    middleText: "This feature is on development",
+                    confirmTextColor: Colors.white,
+                    buttonColor: Colors.lightBlue,
+                    onConfirm: () {
+                      Get.back();
+                    },
+                    textConfirm: "Okay",
+                    titleStyle: GoogleFonts.poppins());
+              },
+              child: HomeCard(
+                titleColor: Colors.purple,
+                color: Colors.purple.shade100,
+                image: 'assets/images/home1.png',
+                rekomendasi: 'Komunitas',
+                title:
+                    'Berbagi bersama Orang Tua \nLainnya untuk Berbagai \nInformasi Mengenai Stunting',
+              ),
             )
           ],
         ),

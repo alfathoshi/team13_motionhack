@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -72,7 +73,18 @@ class ProfileView extends GetView<ProfileController> {
                       borderRadius: BorderRadius.circular(5.0),
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.defaultDialog(
+                        title: "On Development",
+                        middleText: "This feature is on development",
+                        confirmTextColor: Colors.white,
+                        buttonColor: Colors.lightBlue,
+                        onConfirm: () {
+                          Get.back();
+                        },
+                        textConfirm: "Okay",
+                        titleStyle: GoogleFonts.poppins());
+                  },
                   child: Text(
                     'Edit Profil',
                     style: GoogleFonts.poppins(
@@ -81,23 +93,64 @@ class ProfileView extends GetView<ProfileController> {
                   ),
                 ),
                 const SizedBox(height: 56),
-                HealthData(),
+                GestureDetector(
+                    onTap: () {
+                      Get.defaultDialog(
+                          title: "On Development",
+                          middleText: "This feature is on development",
+                          confirmTextColor: Colors.white,
+                          buttonColor: Colors.lightBlue,
+                          onConfirm: () {
+                            Get.back();
+                          },
+                          textConfirm: "Okay",
+                          titleStyle: GoogleFonts.poppins());
+                    },
+                    child: HealthData()),
                 const SizedBox(height: 15),
-                ListTile(
-                  title: Text(
-                    'Riwayat Catatan Perkembangan',
-                    style: GoogleFonts.poppins(
-                        textStyle: const TextStyle(fontSize: 15)),
+                GestureDetector(
+                  onTap: () {
+                    Get.defaultDialog(
+                        title: "On Development",
+                        middleText: "This feature is on development",
+                        confirmTextColor: Colors.white,
+                        buttonColor: Colors.lightBlue,
+                        onConfirm: () {
+                          Get.back();
+                        },
+                        textConfirm: "Okay",
+                        titleStyle: GoogleFonts.poppins());
+                  },
+                  child: ListTile(
+                    title: Text(
+                      'Riwayat Catatan Perkembangan',
+                      style: GoogleFonts.poppins(
+                          textStyle: const TextStyle(fontSize: 15)),
+                    ),
+                    trailing: const Icon(Icons.arrow_right),
                   ),
-                  trailing: const Icon(Icons.arrow_right),
                 ),
-                ListTile(
-                  title: Text(
-                    'Riwayat Konsultasi',
-                    style: GoogleFonts.poppins(
-                        textStyle: const TextStyle(fontSize: 15)),
+                GestureDetector(
+                  onTap: () {
+                    Get.defaultDialog(
+                        title: "On Development",
+                        middleText: "This feature is on development",
+                        confirmTextColor: Colors.white,
+                        buttonColor: Colors.lightBlue,
+                        onConfirm: () {
+                          Get.back();
+                        },
+                        textConfirm: "Okay",
+                        titleStyle: GoogleFonts.poppins());
+                  },
+                  child: ListTile(
+                    title: Text(
+                      'Riwayat Konsultasi',
+                      style: GoogleFonts.poppins(
+                          textStyle: const TextStyle(fontSize: 15)),
+                    ),
+                    trailing: const Icon(Icons.arrow_right),
                   ),
-                  trailing: const Icon(Icons.arrow_right),
                 ),
                 GestureDetector(
                   onTap: () {
