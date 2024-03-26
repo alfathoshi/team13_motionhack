@@ -80,49 +80,59 @@ class SignUpView extends GetView<SignUpController> {
                   const SizedBox(
                     height: 16,
                   ),
-                  TextField(
-                    onChanged: (value) {
-                      controller.isEmpty();
-                    },
-                    obscureText: true,
-                    controller: controller.passC,
-                    decoration: InputDecoration(
-                      hintText: 'Password',
-                      hintStyle: const TextStyle(color: Color(0xFFc4c4c4)),
-                      suffixIcon: const Icon(Icons.remove_red_eye),
-                      suffixIconColor: const Color(0xFFc4c4c4),
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide:
-                              const BorderSide(color: Color(0xFFc4c4c4))),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                  ),
+                  Obx(() => TextField(
+                        onChanged: (value) {
+                          controller.isEmpty();
+                        },
+                        obscureText: controller.isSecure.value,
+                        controller: controller.passC,
+                        decoration: InputDecoration(
+                          hintText: 'Password',
+                          hintStyle: const TextStyle(color: Color(0xFFc4c4c4)),
+                          suffixIcon: IconButton(
+                            icon: const Icon(Icons.remove_red_eye),
+                            onPressed: () {
+                              controller.showPassword();
+                            },
+                          ),
+                          suffixIconColor: const Color(0xFFc4c4c4),
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide:
+                                  const BorderSide(color: Color(0xFFc4c4c4))),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      )),
                   const SizedBox(
                     height: 16,
                   ),
-                  TextField(
-                    onChanged: (value) {
-                      controller.isEmpty();
-                    },
-                    obscureText: true,
-                    controller: controller.confirmPassC,
-                    decoration: InputDecoration(
-                      hintText: 'Konfirmasi Password',
-                      hintStyle: const TextStyle(color: Color(0xFFc4c4c4)),
-                      suffixIcon: const Icon(Icons.remove_red_eye),
-                      suffixIconColor: const Color(0xFFc4c4c4),
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide:
-                              const BorderSide(color: Color(0xFFc4c4c4))),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                  ),
+                  Obx(() => TextField(
+                        onChanged: (value) {
+                          controller.isEmpty();
+                        },
+                        obscureText: controller.isSecureC.value,
+                        controller: controller.confirmPassC,
+                        decoration: InputDecoration(
+                          hintText: 'Konfirmasi Password',
+                          hintStyle: const TextStyle(color: Color(0xFFc4c4c4)),
+                          suffixIcon: IconButton(
+                            icon: const Icon(Icons.remove_red_eye),
+                            onPressed: () {
+                              controller.showPasswordC();
+                            },
+                          ),
+                          suffixIconColor: const Color(0xFFc4c4c4),
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide:
+                                  const BorderSide(color: Color(0xFFc4c4c4))),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      )),
                   const SizedBox(
                     height: 68,
                   ),
@@ -131,6 +141,7 @@ class SignUpView extends GetView<SignUpController> {
                           controller.emailC.text,
                           controller.passC.text,
                           controller.usernameC.text,
+                          controller.confirmPassC.text,
                         ),
                         style: ElevatedButton.styleFrom(
                             backgroundColor: controller.isButtonActive.value
@@ -157,7 +168,9 @@ class SignUpView extends GetView<SignUpController> {
                     height: 24,
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      authC.signInWithGoogle();
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
                       foregroundColor: Colors.black,
