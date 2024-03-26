@@ -6,7 +6,7 @@ class FirestoreDatabase {
   final CollectionReference posts =
       FirebaseFirestore.instance.collection('posts');
 
-  Future<void> addPost(String username, String message) {
+  Future<void> addPost(String username, String message, String jam, String menit) {
     return posts.add({
       'UserName': username,
       'PostMessage': message,

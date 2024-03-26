@@ -56,9 +56,11 @@ class PostCommunityView extends GetView<PostCommunityController> {
             return Text("${snapshot.error}");
           } else if (snapshot.hasData) {
             Map<String, dynamic>? user = snapshot.data!.data();
+            Timestamp now = Timestamp.now();
+            DateTime dateNow = now.toDate();
             return FloatingActionButton(
               onPressed: () {
-                controller.postMessage(user!['username']);
+                controller.postMessage(user!['username'], dateNow.minute.toString(), dateNow.hour.toString());
               },
               foregroundColor: Colors.white,
               backgroundColor: const Color(0xFF60ABEE),

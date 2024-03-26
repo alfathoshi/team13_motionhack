@@ -1,20 +1,24 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CommunityCard extends StatelessWidget {
   final String username;
   final String message;
-  CommunityCard({
-    super.key,
-    required this.message,
-    required this.username,
-  });
+  final String menit;
+  final String jam;
+  CommunityCard(
+      {super.key,
+      required this.message,
+      required this.username,
+      required this.jam,
+      required this.menit});
   final isLiked = false.obs;
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 180,
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -39,14 +43,26 @@ class CommunityCard extends StatelessWidget {
           children: [
             Row(
               children: [
-                CircleAvatar(),
-                SizedBox(
+                const CircleAvatar(
+                  radius: 24,
+                  backgroundColor: Colors.transparent,
+                  child: Icon(
+                    Icons.account_circle,
+                    size: 48,
+                    color: Colors.lightBlue,
+                  ),
+                ),
+                const SizedBox(
                   width: 10,
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(username),
+                    Text(
+                      username,
+                      style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
+                    ),
+                    Text("$jam:$menit"),
                   ],
                 )
               ],
@@ -54,7 +70,10 @@ class CommunityCard extends StatelessWidget {
             const SizedBox(
               height: 16,
             ),
-            Text(message),
+            Text(
+              message,
+              style: GoogleFonts.poppins(),
+            ),
             const SizedBox(
               height: 9,
             ),
@@ -108,7 +127,7 @@ class CommunityCard extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '12',
+                      '0',
                       style: GoogleFonts.poppins(color: Colors.grey),
                     )
                   ],
