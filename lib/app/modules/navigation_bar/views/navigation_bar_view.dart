@@ -45,22 +45,20 @@ class NavigationBarView extends GetView<NavigationBarController> {
           ],
         ),
       ),
-      floatingActionButton: MediaQuery.of(context).viewInsets.bottom != 0
-          ? null
-          : Obx(() => Visibility(
-                visible: controller.community.value,
-                child: FloatingActionButton(
-                  onPressed: () {
-                    Get.toNamed(Routes.POST_COMMUNITY);
-                  },
-                  foregroundColor: Colors.white,
-                  backgroundColor: const Color(0xFF60ABEE),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50),
-                  ),
-                  child: const Icon(Icons.add),
-                ),
-              )),
+      floatingActionButton: Obx(() => Visibility(
+            visible: controller.community.value,
+            child: FloatingActionButton(
+              onPressed: () {
+                Get.toNamed(Routes.POST_COMMUNITY);
+              },
+              foregroundColor: Colors.white,
+              backgroundColor: const Color(0xFF60ABEE),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(50),
+              ),
+              child: const Icon(Icons.add),
+            ),
+          )),
     );
   }
 }
