@@ -11,18 +11,22 @@ class AuthController extends GetxController {
 
   Stream<User?> get streamAuthStatus => auth.authStateChanges();
 
-  void signin(String email, String pass, String username) async {
+  void signin(String email, String pass, String username, String Cpass) async {
     try {
-      UserCredential userCredential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: email,
-        password: pass,
-      );
-      createUserDocument(userCredential, username);
-      Get.offAllNamed(Routes.NAVIGATION_BAR);
+      if (pass != Cpass) {
+        errorDialog('Password tidak sama', 'Silahkan konfirmasi ulang');
+      } else {
+        UserCredential userCredential =
+            await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: email,
+          password: pass,
+        );
+        createUserDocument(userCredential, username);
+        Get.offAllNamed(Routes.NAVIGATION_BAR);
+      }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-         errorDialog(
+        errorDialog(
           "Password terlalu lemah",
           "Silahkan gunakan password lain",
         );
