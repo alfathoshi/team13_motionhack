@@ -15,20 +15,10 @@ import 'package:motionhack/app/modules/sign_up/views/sign_up_view.dart';
 
 import '../modules/consultant/bindings/consultant_binding.dart';
 import '../modules/consultant/views/consultant_view.dart';
-import '../modules/community/bindings/community_binding.dart';
-import '../modules/community/views/community_view.dart';
-import '../modules/consultation/bindings/consultation_binding.dart';
-import '../modules/consultation/views/consultation_view.dart';
-import '../modules/education/bindings/education_binding.dart';
-import '../modules/education/views/education_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
-import '../modules/navigation_bar/bindings/navigation_bar_binding.dart';
-import '../modules/navigation_bar/views/navigation_bar_view.dart';
 import '../modules/sign_in/bindings/sign_in_binding.dart';
 import '../modules/sign_in/views/sign_in_view.dart';
-import '../modules/sign_up/bindings/sign_up_binding.dart';
-import '../modules/sign_up/views/sign_up_view.dart';
 import '../modules/splash_screen/bindings/splash_screen_binding.dart';
 import '../modules/splash_screen/views/splash_screen_view.dart';
 import '../modules/video_page/bindings/video_page_binding.dart';
@@ -86,6 +76,11 @@ class AppPages {
       name: _Paths.COMMUNITY,
       page: () => CommunityView(),
       binding: CommunityBinding(),
+    ),
+    GetPage(
+      name: _Paths.POST_COMMUNITY,
+      page: () => PostCommunityView(),
+      binding: PostCommunityBinding(),
     ),
     GetPage(
       name: _Paths.CONSULTANT,

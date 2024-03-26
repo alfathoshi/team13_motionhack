@@ -16,61 +16,62 @@ class PostCommunityView extends GetView<PostCommunityController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'Tanya',
-            style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
-          ),
+      appBar: AppBar(
+        title: Text(
+          'Tanya',
+          style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
         ),
-        body: FutureBuilder(
-          future: controller.getData(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            } else if (snapshot.hasError) {
-              return Text("${snapshot.error}");
-            } else if (snapshot.hasData) {
-              Map<String, dynamic>? user = snapshot.data!.data();
-              return Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: PostCommentCard(
-                  username: user!['username'],
-                  textC: controller.askC,
-                ),
-              );
-            } else {
-              return Text('No Data');
-            }
-          },
-        ),
-        floatingActionButton: FutureBuilder(
-          future: controller.getData(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            } else if (snapshot.hasError) {
-              return Text("${snapshot.error}");
-            } else if (snapshot.hasData) {
-              Map<String, dynamic>? user = snapshot.data!.data();
-              return FloatingActionButton(
-                onPressed: () {
-                  controller.postMessage(user!['username']);
-                },
-                foregroundColor: Colors.white,
-                backgroundColor: const Color(0xFF60ABEE),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50),
-                ),
-                child: const Icon(Icons.send),
-              );
-            } else {
-              return Text('No Data');
-            }
-          },
-        ));
+      ),
+      body: FutureBuilder(
+        future: controller.getData(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (snapshot.hasError) {
+            return Text("${snapshot.error}");
+          } else if (snapshot.hasData) {
+            Map<String, dynamic>? user = snapshot.data!.data();
+            return Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: PostCommentCard(
+                username: user!['username'],
+                textC: controller.askC,
+              ),
+            );
+          } else {
+            return Text('No Data');
+          }
+        },
+      ),
+      floatingActionButton: FutureBuilder(
+        future: controller.getData(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (snapshot.hasError) {
+            return Text("${snapshot.error}");
+          } else if (snapshot.hasData) {
+            Map<String, dynamic>? user = snapshot.data!.data();
+            return FloatingActionButton(
+              onPressed: () {
+                controller.postMessage(user!['username']);
+              },
+              foregroundColor: Colors.white,
+              backgroundColor: const Color(0xFF60ABEE),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(50),
+              ),
+              child: const Icon(Icons.send),
+            );
+          } else {
+            return Text('No Data');
+          }
+        },
+      ),
+    );
   }
 }
