@@ -32,22 +32,20 @@ class CommunityView extends GetView<CommunityController> {
                 child: Text('No Data'),
               );
             }
-            return Expanded(
-              child: ListView.builder(
-                itemCount: posts.length,
-                itemBuilder: (context, index) {
-                  final post = posts[index];
-                  String message = post['PostMessage'];
-                  String username = post['UserName'];
-                  return Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: CommunityCard(
-                      username: username,
-                      message: message,
-                    ),
-                  );
-                },
-              ),
+            return ListView.builder(
+              itemCount: posts.length,
+              itemBuilder: (context, index) {
+                final post = posts[index];
+                String message = post['PostMessage'];
+                String username = post['UserName'];
+                return Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: CommunityCard(
+                    username: username,
+                    message: message,
+                  ),
+                );
+              },
             );
           },
         ));
