@@ -8,7 +8,7 @@ BeHealthy adalah aplikasi yang di rancang khusus untuk memantau pertumbuhan dan 
 Clone project ini
 
 ```bash
-https://github.com/alfathoshi/tema13_motionhack.git
+[https://github.com/alfathoshi/team13_motionhack.git]
 ```
 
 Mendapatkan dependency
