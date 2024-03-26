@@ -15,16 +15,11 @@ class EducationView extends GetView<EducationController> {
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          title: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Edukasi',
-                style: GoogleFonts.poppins(
-                    textStyle: const TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.black)),
-              ),
-            ],
+          title: Text(
+            'Edukasi',
+            style: GoogleFonts.poppins(
+                textStyle: const TextStyle(
+                    fontWeight: FontWeight.bold, color: Colors.black)),
           ),
           bottom: const TabBar(
             indicatorColor: Colors.blue,

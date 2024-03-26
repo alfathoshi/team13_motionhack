@@ -13,6 +13,7 @@ abstract class Routes {
   static const EDUCATION = _Paths.EDUCATION;
   static const CONSULTATION = _Paths.CONSULTATION;
   static const COMMUNITY = _Paths.COMMUNITY;
+  static const CONSULTANT = _Paths.CONSULTANT;
 }
 
 abstract class _Paths {
@@ -25,4 +26,5 @@ abstract class _Paths {
   static const EDUCATION = '/education';
   static const CONSULTATION = '/consultation';
   static const COMMUNITY = '/community';
+  static const CONSULTANT = '/consultant';
 }
