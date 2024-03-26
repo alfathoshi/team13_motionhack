@@ -1,20 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
+final user = FirebaseAuth.instance.currentUser!;
+
 class HomeController extends GetxController {
-  //TODO: Implement HomeController
-
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  Future<DocumentSnapshot<Map<String, dynamic>>> getData() async {
+    return await FirebaseFirestore.instance
+        .collection('users')
+        .doc(user.email)
+        .get();
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {}
-  void increment() => count.value++;
 }

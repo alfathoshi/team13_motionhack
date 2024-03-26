@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:motionhack/app/modules/onboarding/bindings/onboarding_binding.dart';
+import 'package:motionhack/app/modules/onboarding/views/onboarding_view.dart';
 
 import '../modules/article_detail/bindings/article_detail_binding.dart';
 import '../modules/article_detail/views/article_detail_view.dart';
@@ -87,6 +89,10 @@ class AppPages {
       name: _Paths.CONSULTANT,
       page: () => const ConsultantView(),
       binding: ConsultantBinding(),
+    ),GetPage(
+      name: _Paths.ON_BOARDING,
+      page: () => const OnboardingView(),
+      binding: OnboardingBinding(),
     ),
     GetPage(
       name: _Paths.ARTICLE_DETAIL,

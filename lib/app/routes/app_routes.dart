@@ -16,6 +16,7 @@ abstract class Routes {
   static const POST_COMMUNITY = _Paths.POST_COMMUNITY;
   static const CONSULTANT = _Paths.CONSULTANT;
   static const ARTICLE_DETAIL = _Paths.ARTICLE_DETAIL;
+  static const ON_BOARDING = _Paths.ON_BOARDING;
 }
 
 abstract class _Paths {
@@ -31,4 +32,5 @@ abstract class _Paths {
   static const POST_COMMUNITY = '/post-community';
   static const CONSULTANT = '/consultant';
   static const ARTICLE_DETAIL = '/article-detail';
+  static const ON_BOARDING = '/on-boarding';
 }

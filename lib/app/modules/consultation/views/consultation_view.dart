@@ -28,14 +28,12 @@ class ConsultationView extends GetView<ConsultationController> {
                 Get.to(ConsultantView());
               },
               child: Card(
+                color: Colors.white,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(42)),
                 child: Row(
                   children: [
                     Container(
-                      width: 148,
-                      child: Text(
-                        "Image",
-                        textAlign: TextAlign.center,
-                      ),
+                      child: Image.asset("assets/images/dokter.png"),
                     ),
                     SizedBox(width: 10),
                     Container(
