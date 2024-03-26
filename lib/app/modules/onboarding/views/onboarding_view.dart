@@ -51,7 +51,7 @@ class OnboardingView extends GetView<OnboardingController> {
                 children: [
                   SizedBox(height: 360),
                   Text(
-                    'Lorem Ipsum',
+                    'Pantau Pertumbuhan',
                     style: GoogleFonts.poppins(
                         textStyle: TextStyle(
                             fontWeight: FontWeight.bold,
@@ -60,7 +60,7 @@ class OnboardingView extends GetView<OnboardingController> {
                   ),
                   SizedBox(height: 15),
                   Text(
-                    'lalalalalalalalallallalalalalalalllalalalalalalallalalalalalallalala',
+                    'Dengan informasi, program, dan dukungan yang tepat, cegah stunting untuk masa depan yang lebih baik.',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
                         textStyle: TextStyle(
@@ -78,7 +78,7 @@ class OnboardingView extends GetView<OnboardingController> {
                 children: <Widget>[
                   SizedBox(height: 360),
                   Text(
-                    'Lorem Ipsum',
+                    'Lindungi Si Kecil',
                     style: GoogleFonts.poppins(
                         textStyle: TextStyle(
                             fontWeight: FontWeight.bold,
@@ -87,7 +87,7 @@ class OnboardingView extends GetView<OnboardingController> {
                   ),
                   SizedBox(height: 15),
                   Text(
-                    'lalalalalalalalallallalalalalalalllalalalalalalallalalalalalallalala',
+                    'Bersama mengambil langkah-langkah yang diperlukan dalam menjaga kesehatan dan perkembangan si kecil',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
                         textStyle: TextStyle(
