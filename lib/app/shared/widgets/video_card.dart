@@ -8,18 +8,19 @@ class VideoCard extends StatelessWidget {
     required this.id,
     required this.title,
     required this.source,
+    required this.image
   });
 
   final String id;
   final String title;
   final String source;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
       child: Container(
-          height: 263,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               boxShadow: [
@@ -34,15 +35,12 @@ class VideoCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                height: 177,
-                color: Colors.grey,
-                child: Center(
-                    child: Text(
-                  'Video',
-                  style: TextStyle(fontSize: 20),
-                )),
-              ),
+              ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(10),
+                  topRight: Radius.circular(10),
+                ),
+                child: Image.asset(image)),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
                 child: Container(

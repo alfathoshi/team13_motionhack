@@ -19,6 +19,7 @@ class VideoPageView extends GetView<VideoPageController> {
                 id: controller.articles[index].id.toString(),
                 title: controller.articles[index].title.toString(),
                 source: controller.articles[index].source.toString(),
+                image: controller.articles[index].image.toString(),
               ))),
     );
   }

@@ -25,6 +25,7 @@ class ArticlePageView extends GetView<ArticlePageController> {
                 title: controller.articles[index].title.toString(),
                 description: controller.articles[index].description.toString(),
                 sourceTitle: controller.articles[index].sourceTitle.toString(),
+                image: controller.articles[index].image.toString(),
               ),
             ),
           )),

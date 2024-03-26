@@ -7,6 +7,7 @@ class ArticleModel {
   String? body;
   String? source;
   String? sourceTitle;
+  String? image;
 
   ArticleModel({
     this.id,
@@ -24,5 +25,6 @@ class ArticleModel {
     body = data["body"];
     source = data["source"];
     sourceTitle = data["sourceTitle"];
+    image = data["image"];
   }
 }
