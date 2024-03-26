@@ -32,8 +32,7 @@ class CommunityView extends GetView<CommunityController> {
                 child: Text('No Data'),
               );
             }
-            Timestamp now = Timestamp.now();
-            DateTime dateNow = now.toDate();
+
             return ListView.builder(
               itemCount: posts.length,
               itemBuilder: (context, index) {

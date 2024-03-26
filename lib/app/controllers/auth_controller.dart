@@ -70,4 +70,11 @@ class AuthController extends GetxController {
     createUserDocument(userCredential, username);
     Get.offAllNamed(Routes.NAVIGATION_BAR);
   }
+
+  Future<DocumentSnapshot<Map<String, dynamic>>> getData() async {
+    return await FirebaseFirestore.instance
+        .collection('users')
+        .doc(auth.currentUser!.email)
+        .get();
+  }
 }

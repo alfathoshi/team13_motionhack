@@ -5,10 +5,5 @@ import 'package:get/get.dart';
 final user = FirebaseAuth.instance.currentUser!;
 
 class HomeController extends GetxController {
-  Future<DocumentSnapshot<Map<String, dynamic>>> getData() async {
-    return await FirebaseFirestore.instance
-        .collection('users')
-        .doc(user.email)
-        .get();
-  }
+  
 }

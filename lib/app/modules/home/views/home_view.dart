@@ -36,7 +36,7 @@ class HomeView extends GetView<HomeController> {
               ),
             ),
             FutureBuilder(
-              future: controller.getData(),
+              future: authC.getData(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(
